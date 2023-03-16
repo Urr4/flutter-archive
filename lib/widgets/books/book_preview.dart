@@ -6,8 +6,9 @@ import 'book_list.dart';
 
 class BookPreview extends StatelessWidget {
   final Book book;
+  var onDelete;
 
-  BookPreview({Key? key, required this.book})
+  BookPreview({Key? key, required this.book, required this.onDelete})
       : super(key: key);
 
   @override
@@ -56,7 +57,7 @@ class BookPreview extends StatelessWidget {
                                       TextButton(
                                           onPressed: () {
                                             print("Deleting '${book.title}'");
-                                            Provider.of<BookList>(context, listen: false).deleteBook(book);
+                                            onDelete(book);
                                             Navigator.pop(context);
                                           },
                                           child: Text("OK")),
